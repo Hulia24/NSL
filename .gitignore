@@ -1,0 +1,23 @@
+# Eseguibili senza estensione
+*
+!*/
+!*.*
+!Makefile
+!Primes
+
+# Eseguibili e compilati con estensione
+*.exe
+*.o
+
+# Ambienti virtuali Python
+tf_env/
+**/tf_env/
+__pycache__/
+.ipynb_checkpoints/
+
+# Librerie esterne
+armadillo-*/
+
+# Editor e sistema
+.vscode/
+.DS_Store

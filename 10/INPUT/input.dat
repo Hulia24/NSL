@@ -1,0 +1,14 @@
+# TSP Parameters:
+
+GEOMETRY        italy                       # map: circle, square, italy
+CITIES_FILE     ../INPUT/cap_prov_ita.dat
+N_CITIES        110
+N_STEPS         100000000                      # steps per replica 
+SWAP_FREQ       10                           # attempt a PT swap every N steps
+
+# Parallel tempering parameters (geometric ladder over the MPI ranks):
+
+T_MIN           0.06                        # rank 0 (coldest) temperature
+T_MAX           0.30                        # rank N-1 (hottest) temperature
+
+#to compile: mpirun --oversubscribe -np 11 ./tsp
