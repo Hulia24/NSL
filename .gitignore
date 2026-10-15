@@ -21,3 +21,4 @@ armadillo-*/
 # Editor e sistema
 .vscode/
 .DS_Store
+*.code-workspace
