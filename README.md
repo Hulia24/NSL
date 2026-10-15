@@ -2,7 +2,7 @@
 
 This repository contains the exercises for the Numerical Simulation Laboratory course at Università degli Studi di Milano, A.Y. 2025/2026, taught by Professor D. E. Galli.
 
-Student ID: 438192A
+Student ID: 43819A
 
 ## Repository structure
 
