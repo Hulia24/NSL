@@ -39,7 +39,7 @@ class PT {
     int get_accepted_swaps() { return _accepted_swaps; }
     int get_proposed_swaps() { return _proposed_swaps; }
 
-    bool SA_step(); //One Metropolis step at current temperature
+    bool Metro_step(); //One Metropolis step at current temperature
     bool PT_swap(int step, int swap_freq); //Parallel tempering swap called by all ranks at every step
 
 };

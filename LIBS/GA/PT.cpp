@@ -20,7 +20,7 @@ PT :: PT(int n_cities, const std::string& namefile, Random& rnd)
 
 };
 
-bool PT :: SA_step(){
+bool PT :: Metro_step(){
 
     const int n_cities = _current_trip.get_n_cities();
     trip proposal = _current_trip;
@@ -84,9 +84,9 @@ bool PT :: PT_swap(int step, int swap_freq){
     const bool is_master = (_rank < partner);
 
     //Exchange (loss, temperature) with partner:
-    double rank[2] = { _current_loss, _temp};
+    double send_buf[2] = { _current_loss, _temp};
     double other[2];
-    MPI_Sendrecv(rank,  2, MPI_DOUBLE, partner, 0, other, 2, MPI_DOUBLE, partner, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
+    MPI_Sendrecv(send_buf,  2, MPI_DOUBLE, partner, 0, other, 2, MPI_DOUBLE, partner, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE );
     
     //Master rank decides the outcome:
     if(is_master){

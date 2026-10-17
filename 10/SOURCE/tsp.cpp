@@ -42,7 +42,7 @@ int main( int argc, char* argv[]){
     for(int step = 1; step <= params.n_steps; step ++){
 
         //local Metropolis step:
-        tsp.SA_step();
+        tsp.Metro_step();
         if(step % 100 == 0) out_loss << step << "\t" << tsp.get_temperature() << "\t"  << tsp.get_current_loss() << "\t" << tsp.get_best_loss() << "\n";
 
         //Swaps:
@@ -78,23 +78,6 @@ int main( int argc, char* argv[]){
     vector<int> all_prop(size), all_acc(size);
     MPI_Gather(&local_proposed, 1, MPI_INT, all_prop.data(), 1, MPI_INT, 0, MPI_COMM_WORLD);
     MPI_Gather(&local_accepted, 1, MPI_INT, all_acc.data(),  1, MPI_INT, 0, MPI_COMM_WORLD);
-
-    // checking stuff
-    vector<double> all_best(size);
-    MPI_Gather(&local_best_loss, 1, MPI_DOUBLE, all_best.data(), 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
-    if (rank == 0) {
-        for (int r = 0; r < size; r++)
-            cout << "rank " << r << "  best = " << all_best[r] << endl;
-    }
-
-    if (rank == 0) {
-        for (int r = 0; r < size - 1; r++) {
-            double pair_rate = (all_prop[r] > 0) ? double(all_acc[r]) / all_prop[r] : 0.0;
-            cout << "pair (" << r << "," << r + 1 << "): " << fixed << setprecision(3) << pair_rate << endl;
-        }
-    }
-
-    //
 
     if (rank == 0) {
         double rate = (total_proposed > 0) ? static_cast<double>(total_accepted) / total_proposed : 0.0;

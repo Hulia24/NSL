@@ -57,7 +57,7 @@ int main(int argc, char *argv[]){
     //mutations protocoll:
     auto short_len = [&](int lo, int hi) {
         double r = rnd.Rannyu();
-        return lo + int((hi - lo + 1) * r * r);
+        return lo + int((hi - lo + 1) * r * r); //to favor short mutations i used r^2
     };
 
     auto mutate = [&](trip& t) {
