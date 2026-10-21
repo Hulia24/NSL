@@ -20,7 +20,7 @@ int main(){
 
      ofstream out_uni("./OUTPUT/uni_" + to_string(N[i]) + ".dat");
      ofstream out_exp("./OUTPUT/exp_" + to_string(N[i]) + ".dat");
-     ofstream out_lnz(".OUTPUT/lor_" + to_string(N[i]) + ".dat");
+     ofstream out_lnz("./OUTPUT/lor_" + to_string(N[i]) + ".dat");
 
       for (int j = 0; j < throws; j++){
          double Sn_uni = 0.0;

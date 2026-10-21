@@ -20,7 +20,7 @@ int main(){
     
     //progressive mean
     {
-        DataBlocking blocker_mean("./OUTPUT/OUTPUT/data_mean.dat", L);
+        DataBlocking blocker_mean("./OUTPUT/data_mean.dat", L);
         for (int i = 0; i<M; i++) blocker_mean.AddMeasure(rnd.Rannyu());
     }
 
